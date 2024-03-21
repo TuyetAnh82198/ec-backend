@@ -54,27 +54,27 @@ app.use((req, res) => {
 mongoose.connect(
     `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.o8ckbff.mongodb.net/test?retryWrites=true&w=majority`
   )
-  .then((result) => {
-    const io = require("./socket.js").init(
-      app.listen(process.env.PORT || 5000)
-    );
-    io.on("connection", (socket) => {
-      socket.on("createRoom", (roomId) => {
-        socket.join(roomId);
-        io.emit("roomCreated", roomId);
-      });
-      socket.on("joinRoom", (roomId) => {
-        socket.join(roomId);
-      });
-      socket.on("frontend send messages", (data) => {
-        io.to(data.roomId).emit("server send messages", data);
-      });
-      socket.on("end chat", (roomId) => {
-        io.to(roomId).emit("server send roomId to end chat", roomId);
-      });
-      socket.on("disconnecting", () => {
-        // console.log(socket.rooms);
-      });
-    });
+  .then((result) => {app.listen(process.env.PORT || 5000)
+    // const io = require("./socket.js").init(
+    //   app.listen(process.env.PORT || 5000)
+    // );
+    // io.on("connection", (socket) => {
+    //   socket.on("createRoom", (roomId) => {
+    //     socket.join(roomId);
+    //     io.emit("roomCreated", roomId);
+    //   });
+    //   socket.on("joinRoom", (roomId) => {
+    //     socket.join(roomId);
+    //   });
+    //   socket.on("frontend send messages", (data) => {
+    //     io.to(data.roomId).emit("server send messages", data);
+    //   });
+    //   socket.on("end chat", (roomId) => {
+    //     io.to(roomId).emit("server send roomId to end chat", roomId);
+    //   });
+    //   socket.on("disconnecting", () => {
+    //     // console.log(socket.rooms);
+    //   });
+    // });
   })
   .catch((err) => console.log(err));
