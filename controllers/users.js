@@ -28,7 +28,7 @@ const signUp = async (req, res) => {
           service: "gmail",
           auth: {
             user: "tailieu22072023@gmail.com",
-            pass: process.env.SENDING_MAIL_PASS,
+            pass: "jkal cjew kxwe kmdn",
           },
         });
         await transport.sendMail({
