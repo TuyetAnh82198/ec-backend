@@ -57,7 +57,7 @@ mongoose
   )
   .then((result) => {
     const io = require("./socket.js").init(
-      app.listen(process.env.PORT || 10000)
+      app.listen(process.env.PORT || 5000)
     );
     io.on("connection", (socket) => {
       socket.on("createRoom", (roomId) => {
