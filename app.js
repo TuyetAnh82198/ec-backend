@@ -51,7 +51,8 @@ app.use((req, res) => {
   return res.redirect(`${process.env.CLIENT_APP}/123`);
 });
 
-mongoose.connect(
+mongoose
+  .connect(
     `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.o8ckbff.mongodb.net/test?retryWrites=true&w=majority`
   )
   .then((result) => {
